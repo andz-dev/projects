@@ -56,6 +56,7 @@ After that we want to run `raspi-config` and setup some basics.
 2. Localisation options
 
 Setup the hostname for the master node => _dspim01_
+
 ![setup hostname raspi-config](./pictures/setup_hostname_raspi-config.png)
 
 Change the localisation to your needs. Also fit the current time zone and so on.
