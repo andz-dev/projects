@@ -83,7 +83,7 @@ Try to enter `docker ps` without sudo should show you the empty container list. 
 ### Install Docker Compose
 Now we ready to install [Docker Compose](https://docs.docker.com/compose/install/) and the necessary command completion. Following the link above to do this manually or use [my script](https://github.com/andz-dev/dev-tools/tree/master/docker/install/arm).
 ```sh
-$ wget -O install_compose_extensions.sh https://github.com/andz-dev/dev-tools/blob/master/docker/install/arm/install_compose_extensions.sh?raw=true | chmod +x install_compose_extensions.sh | sudo sh install_compose_extensions.sh
+$ wget -O install_compose_extensions.sh https://github.com/andz-dev/dev-tools/blob/master/docker/install/arm/install_compose_extensions.sh?raw=true; chmod +x install_compose_extensions.sh; sudo sh install_compose_extensions.sh
 ```
 ### Initialize the swarm
 Run the following command to initialize a Docker Swarm.
