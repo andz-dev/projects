@@ -23,6 +23,7 @@ Because I wanted to minimize the effort for setup and configuration I decide to 
 
 ## Architecture
 Because the same hardware is used one of the 3 Pi's will be the Docker Swarm master and the other ones becomes a node. For this we have the following scenario:
+
 ![hardware setup](./architecture/pi_start_architecture.png)
 
 In the picture above the master knows the nodes and can interact with them. For the hostnames I used the following initial letters from: **D**ocker **S**warm **Pi** **M**aster/**N**ode.
@@ -30,6 +31,7 @@ In the picture above the master knows the nodes and can interact with them. For 
 # Hypriot OS
 ## Installation
 Download and install [Hypriot OS](https://blog.hypriot.com/) directly from their website. Also download [Etcher](https://etcher.io/) or use any other image writing tool to copy the OS to the SD cards 3 times.
+
 ![etcher copies hypriot os](./pictures/etcher_copies_hypriotos.png)
 
 After that unmount the SD card and plug it into the Pi.
@@ -65,6 +67,7 @@ Setup the hostname for the master node => _dspim01_
 ![setup hostname raspi-config](./pictures/setup_hostname_raspi-config.png)
 
 Change the localisation to your needs. Also fit the current time zone and so on.
+
 ![raspi-config localisation option](./pictures/raspi-config_localisation_option.png)
 
 Reboot your system to overtake the changes.
@@ -105,7 +108,7 @@ $ docker swarm init
 
 After initialization you've get the message that your current system is now a manager. For later usage we can join more nodes using `docker swarm join ...`.
 
-### Init swarm and running portainer
+### Run portainer
 With [Portainer](https://portainer.io/) we get a powerful management tool to manage our local docker instance and a Docker Swarm.
 First of all we need to create a new volume there portainer can store it's data.
 
@@ -130,6 +133,7 @@ portainer/portainer \
 **Note:** You can change the published port _9000_ to any other port.
 
 The portainer container is downloaded from [Dockerhub](https://hub.docker.com/r/portainer/portainer/) and started. After that we can access the portainer UI with our webbrowser and port 9000.
+
 ![portainer web ui first start](./pictures/portainer_web_ui_first_start.png)
 
 Enter a new password to access the Web UI as admin. Click on _Create user_ to continue.
@@ -137,10 +141,11 @@ Enter a new password to access the Web UI as admin. Click on _Create user_ to co
 
 ### Web UI
 After login you see the _Dashboard_ and all necessary Docker information.
+
 ![portainer dashboard](./pictures/portainer_dashboard.png)
 
 ## Node configuration
-The manager is running and awaits new nodes. Now it is time to configure our nodes and create the Swarm.
+The manager is running and waiting for new nodes. Now it is time to configure our nodes and create the Swarm.
 For this we need to repeat the configuration steps like we did for the manager:
 
 1. Run `raspi-config`
@@ -177,15 +182,18 @@ $ docker swarm join --token SWMTKN-1-6163youtkgd4pttp5708pvqhifmqvv24nbvj07kd1se
 ```
 
 After that switch to the Portainer UI and go to the _Swarm_ page. There are three devices listed.
+
 ![docker swarm portainer](./pictures/docker_swarm_portainer.png)
 
 ## Host containers
 Now we are ready to go to host some containers. For a frist try we use the _App Templates_. Navigate to this page and select the _Stack_ option. Then click on _Portainer Agent_, set a Name and click on _Deploy the stack_ to begin the deployment.
+
 ![portainer app template portainer](./pictures/portainer_app_template_portainer.png)
 
 Wait some time till the _Stacks_ page is shown our _porttest_ Stack. Click on it in the list and you see that 1 container is running.
 The portainer agent is scheduled globally - on all 3 devices in the swarm. With the agent Portainer can have more control to the Docker instances on the devices.
 For more information [read the manual](http://portainer.readthedocs.io/en/stable/agent.html).
+
 ![](./pictures/portainer_agent_stack.png)
 
 **If you want to deploy more containers and stacks read my other tutorials in this project page.**

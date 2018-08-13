@@ -1,5 +1,5 @@
 # Container data and volumes
-[This tutorial based on my Node-RED container build project.]()
+[This tutorial based on my Node-RED container build project.](https://github.com/andz-dev/dev-tools/tree/master/docker/build)
 If you mentioned from our container start the Node-RED user directory is placed in ```/root/.node-red```. To keep this data persistent after the container was deleted or re-run with other parameters - for example an other port than the default ones - there a two options:
 
 1. Map the container directory to the host directory.
@@ -152,7 +152,7 @@ ENTRYPOINT [ "entrypoint.sh" ]
 
 We also need a script called _entrypoint.sh_ in the same directory like the _Dockerfile_. The script generates new host keys for the container.
 Build the image with ```$ docker build -t ssh-arm:0.1```.
-Run the container via ```$ ocker run -d --rm --name sshtest -p 1337:22 -v nodered:/tmp/ ssh-arm:0.1```
+Run the container via ```$ docker run -d --rm --name sshtest -p 1337:22 -v nodered:/tmp/ ssh-arm:0.1```
 
 **Note:** You can check if the container runs via ```$ docker ps``` and the port mapping with ```$ docker port sshtest```.
 We are now able to access the container via _SHH_ on port _1337_.
@@ -330,3 +330,5 @@ Accessing the data is easier if we map the volumes directly but is not useful be
 The volume is the best way to store data but needs a little bit more to do to read and write the files and directories.
 For this we can use an SSH server and copy files via SCP from container to the host.
 Or we create a new SMB server which allows us to share the data with our host and other machines.
+
+![docker_host_volume_summary](architecture/docker_host_volume_summary.png)
