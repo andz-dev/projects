@@ -42,7 +42,8 @@ drwxr-xr-x 2 root   root   4,0K Jul 22 16:37 node_modules
 Changes made in the host directory will be loaded next time the container starts.
 
 ## Use Docker Volume
-A Docker Volume is a file with a filesystem which can be used as a drive or volume directly to containers for persistence data storage.
+A Docker Volume is a file with a filesystem which can be used in a container for persistence data storage.
+It's the preferred mechanism because Docker they are completely managed by Docker (bind mounts are dependent on the directory structure of the host).
 You can list all available volumes in docker via: ```$ docker volume ls```
 To create a new volume use the ```create``` command:
 
