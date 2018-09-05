@@ -47,7 +47,11 @@ RUN chmod +x /usr/bin/samba.sh
 EXPOSE 137/udp 138/udp 139 445
 
 HEALTHCHECK --interval=60s --timeout=15s \
+<<<<<<< HEAD
 CMD [ "smbclient -L '\\localhost\' -U 'guest%' -m SMB3" ]
+=======
+CMD [ "smbclient -L '\\localhost\' -U 'guest%' -m SMB3"]
+>>>>>>> 7ae28b2ca54d1a2b0038019bda1d2dac6df0a6fa
 
 VOLUME [ "/etc/samba" ]
 
