@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>730</x>
+      <y>130</y>
+      <w>270</w>
+      <h>820</h>
+    </coordinates>
+    <panel_attributes>Docker Image Layers
+layer=-1
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>170</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+16508e5c265d</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>230</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+537166ffe721</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>290</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+1c4fdc81b393</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>350</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+ea28caa7c2e1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>410</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+660e284e8d65</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>520</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+be3617b46921</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>580</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+a0c6a3f85f19</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>640</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+09cb15baefe4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>700</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+c0c4fadcce2a</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>760</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+26791b04b268</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>170</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 1/12 : FROM ubuntu:18.04</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>240</x>
+      <y>120</y>
+      <w>410</w>
+      <h>830</h>
+    </coordinates>
+    <panel_attributes>Docker Build Steps
+--
+layer=-1
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>230</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 2/12 : LABEL Maintainer "Andreas Elser"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>290</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 3/12 : LABEL Version "0.1"</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>350</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 4/12 : RUN apt update &amp;&amp; apt upgrade -y</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>410</y>
+      <w>370</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 5/12 : RUN apt install -y lighttpd \
+                curl \
+                &amp;&amp; apt clean autoclean \
+                &amp;&amp; apt autoremove --yes \
+                &amp;&amp; rm -rf /var/lib/apt/*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>520</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 6/12 : RUN echo server.network-backend = \"writev\" &gt;&gt; /etc/lighttpd/lighttpd.conf</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>580</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 7/12 : ADD etc/lighttpd/* /etc/lighttpd/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>640</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 8/12 : EXPOSE 80</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>700</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 9/12 : HEALTHCHECK --interval=30s --timeout=5s CMD [ "curl http://localhost:80/index.html || exit 1" ]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>760</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 10/12 : VOLUME /var/www/localhost</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>180</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>240</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>300</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>360</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>420</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>530</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>590</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>650</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>710</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>770</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>820</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 11/12 : VOLUME /etc/lighttpd</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>880</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>halign=left
+style=wordwrap
+Step 12/12 : ENTRYPOINT [ "lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf" ]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>820</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+c506835efc85</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>880</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+62bd1721f94d</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>830</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>890</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+</diagram>
