@@ -28,10 +28,10 @@ fontfamily=Monospaced //possible: SansSerif,Serif,Monospaced
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>0</x>
-      <y>385</y>
+      <x>182</x>
+      <y>343</y>
       <w>1050</w>
-      <h>518</h>
+      <h>609</h>
     </coordinates>
     <panel_attributes>Docker host
 layer=-2</panel_attributes>
@@ -40,8 +40,8 @@ layer=-2</panel_attributes>
   <element>
     <id>UMLHierarchy</id>
     <coordinates>
-      <x>693</x>
-      <y>441</y>
+      <x>875</x>
+      <y>399</y>
       <w>329</w>
       <h>301</h>
     </coordinates>
@@ -65,8 +65,8 @@ layer=0</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>679</x>
-      <y>413</y>
+      <x>861</x>
+      <y>371</y>
       <w>357</w>
       <h>343</h>
     </coordinates>
@@ -78,8 +78,8 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>742</x>
-      <y>98</y>
+      <x>924</x>
+      <y>56</y>
       <w>280</w>
       <h>231</h>
     </coordinates>
@@ -90,8 +90,8 @@ layer=0</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>728</x>
-      <y>70</y>
+      <x>910</x>
+      <y>28</y>
       <w>308</w>
       <h>273</h>
     </coordinates>
@@ -103,8 +103,8 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>679</x>
-      <y>784</y>
+      <x>861</x>
+      <y>742</y>
       <w>301</w>
       <h>84</h>
     </coordinates>
@@ -116,8 +116,8 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>693</x>
-      <y>812</y>
+      <x>875</x>
+      <y>770</y>
       <w>273</w>
       <h>42</h>
     </coordinates>
@@ -131,10 +131,10 @@ echo &lt;p&gt;My fast web container&lt;p&gt; &gt; index.html
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>70</x>
-      <y>609</y>
+      <x>252</x>
+      <y>567</y>
       <w>476</w>
-      <h>280</h>
+      <h>371</h>
     </coordinates>
     <panel_attributes>Dockerfile
 layer=-1
@@ -144,8 +144,8 @@ bg=cyan</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>14</x>
-      <y>231</y>
+      <x>196</x>
+      <y>189</y>
       <w>133</w>
       <h>112</h>
     </coordinates>
@@ -157,8 +157,8 @@ bg=pink</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>28</x>
-      <y>259</y>
+      <x>210</x>
+      <y>217</y>
       <w>105</w>
       <h>70</h>
     </coordinates>
@@ -170,8 +170,8 @@ ubuntu:18.04</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>28</x>
-      <y>406</y>
+      <x>210</x>
+      <y>364</y>
       <w>126</w>
       <h>42</h>
     </coordinates>
@@ -186,8 +186,8 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>189</x>
-      <y>427</y>
+      <x>371</x>
+      <y>385</y>
       <w>357</w>
       <h>70</h>
     </coordinates>
@@ -202,8 +202,8 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>70</x>
-      <y>322</y>
+      <x>252</x>
+      <y>280</y>
       <w>77</w>
       <h>98</h>
     </coordinates>
@@ -214,8 +214,8 @@ pull image</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>91</x>
-      <y>434</y>
+      <x>273</x>
+      <y>392</y>
       <w>112</w>
       <h>49</h>
     </coordinates>
@@ -226,10 +226,10 @@ push image</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>84</x>
-      <y>637</y>
+      <x>266</x>
+      <y>595</y>
       <w>448</w>
-      <h>238</h>
+      <h>329</h>
     </coordinates>
     <panel_attributes>layer=0
 Dockerfile
@@ -250,7 +250,7 @@ RUN echo server.network-backend = \"writev\" &gt;&gt; /etc/lighttpd/lighttpd.con
 --
 ADD ~/docker/build/etc/lighttpd/* /etc/lighttpd
 --
-EXPOSE 80
+EXPOSE 3000
 --
 HEALTHCHECK --interval=30s --timeout=5s \
 CMD [ "curl http://localhost:80/index.html || exit 1" ]
@@ -258,14 +258,26 @@ CMD [ "curl http://localhost:80/index.html || exit 1" ]
 VOLUME /var/www/localhost
 VOLUME /etc/lighttpd
 --
-ENTRYPOINT [ "lighttpd", "-D", "-f", "/etc/lighttpd.conf" ]</panel_attributes>
+RUN adduser --disabled-password --gecos '' lighttpd
+--
+RUN chown -R lighttpd /var/log/lighttpd
+--
+RUN touch /var/run/lighttpd.pid
+--
+RUN chown lighttpd /var/run/lighttpd.pid
+--
+RUN chown lighttpd /usr/sbin/lighttpd
+--
+USER lighttpd
+--
+ENTRYPOINT [ ""/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd.conf" ]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>0</x>
-      <y>42</y>
+      <x>182</x>
+      <y>0</y>
       <w>1050</w>
       <h>315</h>
     </coordinates>
@@ -276,8 +288,8 @@ layer=-2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>189</x>
-      <y>469</y>
+      <x>371</x>
+      <y>427</y>
       <w>42</w>
       <h>203</h>
     </coordinates>
@@ -287,8 +299,8 @@ layer=-2</panel_attributes>
   <element>
     <id>UMLHierarchy</id>
     <coordinates>
-      <x>756</x>
-      <y>126</y>
+      <x>938</x>
+      <y>84</y>
       <w>252</w>
       <h>189</h>
     </coordinates>
@@ -307,8 +319,8 @@ layer=0</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>385</x>
-      <y>238</y>
+      <x>567</x>
+      <y>196</y>
       <w>161</w>
       <h>105</h>
     </coordinates>
@@ -320,8 +332,8 @@ bg=light_gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>399</x>
-      <y>266</y>
+      <x>581</x>
+      <y>224</y>
       <w>133</w>
       <h>63</h>
     </coordinates>
@@ -337,8 +349,8 @@ lighttpd-mod_auth</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>336</x>
-      <y>294</y>
+      <x>518</x>
+      <y>252</y>
       <w>336</w>
       <h>427</h>
     </coordinates>
@@ -351,20 +363,22 @@ install</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>889</x>
-      <y>175</y>
-      <w>266</w>
+      <x>1071</x>
+      <y>133</y>
+      <w>343</w>
       <h>448</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-download files</panel_attributes>
+download files via wget
+use --no-check-certificate
+to avoid SSL errors</panel_attributes>
     <additional_attributes>20.0;10.0;250.0;10.0;250.0;620.0;10.0;620.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>644</x>
-      <y>560</y>
+      <x>826</x>
+      <y>518</y>
       <w>154</w>
       <h>287</h>
     </coordinates>
@@ -374,8 +388,8 @@ download files</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>364</x>
-      <y>581</y>
+      <x>546</x>
+      <y>539</y>
       <w>406</w>
       <h>210</h>
     </coordinates>
