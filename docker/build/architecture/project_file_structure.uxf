@@ -241,19 +241,17 @@ RUN apt update
 RUN apt upgrade -y
 --
 RUN apt install lighttpd \
-                lighttpd-mod_auth \
+                curl \
                 &amp;&amp; apt clean autoclean \
                 &amp;&amp; apt autoremove --yes \
                 &amp;&amp; rm -rf /var/lib/apt/*
---
-RUN echo server.network-backend = \"writev\" &gt;&gt; /etc/lighttpd/lighttpd.conf
 --
 ADD ~/docker/build/etc/lighttpd/* /etc/lighttpd
 --
 EXPOSE 3000
 --
 HEALTHCHECK --interval=30s --timeout=5s \
-CMD [ "curl http://localhost:80/index.html || exit 1" ]
+CMD [ "curl http://localhost:3000/index.html || exit 1" ]
 --
 VOLUME /var/www/localhost
 VOLUME /etc/lighttpd
@@ -266,11 +264,9 @@ RUN touch /var/run/lighttpd.pid
 --
 RUN chown lighttpd /var/run/lighttpd.pid
 --
-RUN chown lighttpd /usr/sbin/lighttpd
---
 USER lighttpd
 --
-ENTRYPOINT [ ""/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd.conf" ]</panel_attributes>
+ENTRYPOINT [ "/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf" ]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
